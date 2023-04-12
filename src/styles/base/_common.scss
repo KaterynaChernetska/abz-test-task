@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--body);
+  }
+  
+  input {
+    background: transparent;
+  }
+  #section{
+    scroll-margin-top: 100px;
+    position: relative;
+    top:60px;
+  
+      // padding-left: 16px;
+      // padding-right: 16px;
+
+  }
+  

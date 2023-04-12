@@ -1,0 +1,39 @@
+.heroSection {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 16px 71px 16px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('../../images/pexels-alexandr-podvalny-1227513.jpeg');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.heroTitle {
+  font-weight: 400;
+  margin-bottom: 21px;
+  font-size: 40px;
+  color: var(--bg-white);
+  text-align: center;
+}
+.heroText {
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  color: var(--bg-white);
+  margin-bottom: 41px;
+}
+
+.heroLink {
+  width: 100px;
+  height: 34px;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  justify-content: center;
+
+  font-size: 16px;
+  line-height: 26px;
+}
