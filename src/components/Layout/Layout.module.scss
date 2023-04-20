@@ -1,8 +1,12 @@
+@import '../../styles/utils/mixins';
 .navigation {
   display: flex;
   align-items: center;
   gap: 14px;
   padding: 13px 16px 13px 16px;
+  @include tablet {
+    gap: 390px;
+  }
 }
 .navigationMenu {
   display: flex;

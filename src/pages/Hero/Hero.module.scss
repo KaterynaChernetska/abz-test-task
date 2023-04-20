@@ -1,3 +1,5 @@
+@import '../../styles/utils/mixins';
+
 .heroSection {
   display: flex;
   align-items: center;
@@ -9,6 +11,9 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  @include tablet {
+    padding: 89px 194px;
+  }
 }
 .heroTitle {
   font-weight: 400;

@@ -9,6 +9,11 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+@media screen and (min-width: 768px) {
+  .heroSection {
+    padding: 89px 194px;
+  }
+}
 
 .heroTitle {
   font-weight: 400;

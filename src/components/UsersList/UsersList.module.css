@@ -1,3 +1,14 @@
+@media screen and (min-width: 768px) {
+  .usersListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+}
+
 .showMoreBtn {
   width: 120px;
   height: 34px;
