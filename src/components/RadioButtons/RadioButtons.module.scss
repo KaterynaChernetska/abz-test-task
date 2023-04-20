@@ -1,0 +1,19 @@
+.radioContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: rgba(0, 0, 0, 0.87);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+}
+.radioTitle {
+    margin-bottom: 11px;
+}
+.radioItemsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  margin-bottom: 47px;
+}

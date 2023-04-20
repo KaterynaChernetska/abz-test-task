@@ -12,11 +12,8 @@
   margin-top: 4px;
   margin-bottom: 23px;
 }
-// input[type="file"] {
-//     display: none;
-// }
+
 .imgInput {
-  //    position: relative;
   width: 328px;
   height: 57px;
   border: 1px solid #d0cfcf;
@@ -28,10 +25,10 @@
   line-height: 26px;
   margin-bottom: 50px;
   background-color: var(--bg-color);
-  // padding-right: 150px;
 }
+
 .imgInput::before {
-  content: 'Upload';
+  content: "Upload";
   display: inline-block;
   display: flex;
   align-items: center;
@@ -48,6 +45,7 @@
   cursor: pointer;
   z-index: 2;
 }
+
 .btn {
   width: 120px;
   display: flex;
@@ -59,7 +57,7 @@
   border-radius: 80px;
   font-weight: 400;
   font-size: 16px;
-  line-height: calc(26 / 16);
+  line-height: 1.625;
   margin: 0 auto;
 }
 
@@ -73,14 +71,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width:240px;
+  width: 240px;
   height: 54px;
   z-index: 1;
   left: 85px;
   top: 1px;
-
 }
 
 .imgInputWrapper {
   position: relative;
-}
+}/*# sourceMappingURL=SignUpForm.module.css.map */

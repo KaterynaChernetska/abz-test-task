@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getPositions } from 'services/api';
-import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
+import scss from './RadioButtons.module.scss';
 
 const RadioButtons = ({ handleRadioChange, positionId }) => {
   const [positions, setPositions] = useState([]);
@@ -21,9 +21,9 @@ const RadioButtons = ({ handleRadioChange, positionId }) => {
   }, []);
 
   return (
-    <div>
-      <p>Select your position</p>
-      <ul>
+    <div className={scss.radioContainer} >
+      <p className={scss.radioTitle}> Select your position</p>
+      <div className={scss.radioItemsContainer}>
         {positions?.map(({ id, name }) => (
           <label key={id}>
             <input
@@ -36,7 +36,7 @@ const RadioButtons = ({ handleRadioChange, positionId }) => {
             {name}
           </label>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

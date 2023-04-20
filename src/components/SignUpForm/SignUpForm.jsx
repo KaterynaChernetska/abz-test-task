@@ -1,8 +1,12 @@
+import { MiniLoader } from 'components/MiniLoader/MiniLoader';
 import RadioButtons from 'components/RadioButtons/RadioButtons';
-import { useEffect, useState } from 'react';
+import Success from 'components/Success/Success';
+import TextInputs from 'components/TextInputs/TextInputs';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchUsers } from 'redux/usersOperations';
-import { getUsers, postUser } from 'services/api';
+import { postUser } from 'services/api';
+import scss from './SignUpForm.module.scss';
 
 const SignUpForm = () => {
   const [name, setName] = useState('');
@@ -10,6 +14,10 @@ const SignUpForm = () => {
   const [phone, setPhone] = useState('');
   const [positionId, setPositionId] = useState(1);
   const [photo, setPhoto] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDisabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
 
   const userMap = {
@@ -21,10 +29,19 @@ const SignUpForm = () => {
   const handleInputChange = event => {
     const { name, value } = event.target;
     userMap[name](value);
+    setDisabled(false);
   };
 
   const handleRadioChange = id => {
     setPositionId(id);
+    setDisabled(false);
+  };
+  const clearInputs = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setPhoto(null);
+    setPositionId(1);
   };
 
   const handleImageChange = event => {
@@ -34,7 +51,7 @@ const SignUpForm = () => {
     const validTypes = ['image/jpeg', 'image/jpg'];
 
     if (!validTypes.includes(fileType)) {
-      alert('Invalid file type. Please upload a jpeg/jpg file.');
+      alert('Invalid file typ e. Please upload a jpeg/jpg file.');
       return;
     }
 
@@ -61,10 +78,8 @@ const SignUpForm = () => {
         }
         setPhoto(file);
       };
-
       img.src = e.target.result;
     };
-
     reader.readAsDataURL(file);
   };
 
@@ -77,103 +92,62 @@ const SignUpForm = () => {
       position_id: positionId,
       photo,
     };
- 
+
     const createNewUser = async () => {
       try {
-        const {message, success} = await postUser(newUser);
+        setIsLoading(true);
+        const { message, success } = await postUser(newUser);
         console.log(message, success);
+        setSuccess(success);
         dispatch(fetchUsers(6));
+        setTimeout(() => setSuccess(false), 5000);
       } catch (error) {
-        // setError(error.message);
+        setError(error.message);
       } finally {
-        // setIsLoading(false);
+        setIsLoading(false);
       }
     };
     createNewUser();
+    clearInputs();
   };
-
-
 
   return (
     <div>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          onChange={handleInputChange}
-          type="text"
-          name="name"
-          value={name}
-          required
-          minLength={2}
-          maxLength={60}
-          placeholder={'Your name'}
-        />
-        <input
-          onChange={handleInputChange}
-          type="text"
-          name="email"
-          value={email}
-          required
-          minLength={2}
-          maxLength={100}
-          pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
-          placeholder={'Email'}
-        />
-        <input
-          onChange={handleInputChange}
-          type="tel"
-          name="phone"
-          value={phone}
-          required
-          pattern=" ^[\+]{0,1}380([0-9]{9})$)"
-          placeholder={'Phone'}
-        />
-        <p>+38 (XXX) XXX - XX - XX</p>
-        <RadioButtons
-          handleRadioChange={handleRadioChange}
-          positionId={positionId}
-        />
-        <input onChange={handleImageChange} type="file" accept=".jpeg,.jpg" />
-        <button>Sign Up</button>
-      </form>
+      {error !== null && <p>Oops, some error occured... Message: {error}</p>}
+      <div>
+        {success ? (
+          <Success />
+        ) : (
+          <form onSubmit={handleFormSubmit} className={scss.form}>
+            <TextInputs
+              handleInputChange={handleInputChange}
+              name={name}
+              email={email}
+              phone={phone}
+            />
+            <p className={scss.phone}>+38 (XXX) XXX - XX - XX</p>
+            <RadioButtons
+              handleRadioChange={handleRadioChange}
+              positionId={positionId}
+            />
+
+            <div className={scss.imgInputWrapper}>
+              <input 
+                className={scss.imgInput}
+                type="file"
+                accept=".jpeg,.jpg"
+                onChange={handleImageChange}
+              />
+                <label className={scss.label}>Upload your photo</label>
+            </div>
+{/* disabled={name || email || phone || photo === null ? 'true' : ''} className={scss.btn */}
+            <button className={scss.btn} disabled={isDisabled} >
+              {isLoading ? <MiniLoader /> : 'Sign Up'}
+            </button>
+          </form>
+        )}
+      </div>
     </div>
   );
 };
 export default SignUpForm;
-
-// import { useFormik } from "formik";
-// import RadioButtons from 'components/RadioButtons/RadioButtons';
-// import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik';
-// import { signupSchema } from '../../validateSchema/validateSchema';
-// const initialValues = {
-//     name: '',
-//     email: '',
-//     phone: '',
-//     positionId: 1,
-//     photo: '',
-//     imageurl: '',
-//   };
-
-//   const handleSubmit = () => {
-
-//   }
-
-// const SignUpForm = () => {
-//   return (
-//     <div>
-//       <Formik
-//       initialValues={initialValues}
-//       validationSchema={signupSchema}
-//       onSubmit={handleSubmit}
-//     >
-//         <Form>
-//           <Field
-//            type="text"
-//           name="name"
-//           />
-//           <RadioButtons positionId={positionId} name='positionId'/>
-//         </Form>
-//       </Formik>
-//     </div>
-//   );
-// };
-// export default SignUpForm;

@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../images/Logo.svg';
 import { useLocation } from 'react-router-dom';
 import { useRef, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
 import Hero from 'pages/Hero/Hero';
 import Users from 'pages/Users/Users';
 import SignUp from 'pages/SignUp/SignUp';
