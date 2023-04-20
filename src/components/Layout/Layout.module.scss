@@ -6,6 +6,18 @@
   padding: 13px 16px 13px 16px;
   @include tablet {
     gap: 390px;
+    padding: 13px 32px 13px 32px;
+  }
+
+  @include laptop {
+    gap: 590px;
+    padding: 13px 60px 13px 60px;
+  }
+  
+  @include desktop {
+    gap: 856px;
+    padding: 13px 695px 13px 695px;
+    background-color: red;
   }
 }
 .navigationMenu {
@@ -25,3 +37,11 @@
   font-size: 16px;
   line-height: 26px;
 }
+// .logo{
+//     @include laptop {
+//         gap: 590px;
+//       }
+//       @include desktop {
+//         gap: 856px;
+//       }
+// }

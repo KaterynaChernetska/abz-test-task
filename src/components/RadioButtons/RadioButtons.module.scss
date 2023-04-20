@@ -1,3 +1,5 @@
+@import '../../styles/utils/mixins';
+
 .radioContainer {
   display: flex;
   flex-direction: column;
@@ -6,6 +8,9 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
+//   @include tablet {
+//     align-self: flex-start;
+//   }
 }
 .radioTitle {
     margin-bottom: 11px;

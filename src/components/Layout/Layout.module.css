@@ -7,6 +7,20 @@
 @media screen and (min-width: 768px) {
   .navigation {
     gap: 390px;
+    padding: 13px 32px 13px 32px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .navigation {
+    gap: 590px;
+    padding: 13px 60px 13px 60px;
+  }
+}
+@media screen and (max-width: 2560) {
+  .navigation {
+    gap: 856px;
+    padding: 13px 695px 13px 695px;
+    background-color: red;
   }
 }
 

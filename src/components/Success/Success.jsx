@@ -1,11 +1,11 @@
 import {ReactComponent as SuccessImage} from '../../images/success-image.svg';
-
+import scss from './Success.module.scss';
 const Success = () => {
 
     return (
-        <div>
+        <div className={scss.successContainer}>
+        <span className={scss.successTitle}>New user successfully registered</span>
         <SuccessImage/>
-        <span>New user successfully registered</span>
         </div>
     )
 }
