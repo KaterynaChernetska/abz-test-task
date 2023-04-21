@@ -38,7 +38,7 @@ const Layout = () => {
   return (
     <>
       <header>
-        <nav className={scss.navigation} style={{ position: 'fixed' }}>
+        <nav className={scss.navigation}>
           <div className={scss.logo}>
             <NavLink to="/">
               <Logo />

@@ -7,6 +7,9 @@
   @include tablet {
     padding: 50px 162px;
   }
+  @include laptop {
+    padding: 50px 262px;
+  }
 }
 
 .phone {
